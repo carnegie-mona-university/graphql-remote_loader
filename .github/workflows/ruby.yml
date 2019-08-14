@@ -17,5 +17,7 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        sh grader.sh
+        result=$(sh grader.sh)
+        curl https://api.github.com/repos/d12/graphql-remote_loader
+        echo $result
    
