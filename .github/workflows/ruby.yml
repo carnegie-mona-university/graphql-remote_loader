@@ -14,8 +14,12 @@ jobs:
       with:
         version: 2.6.x
     - name: Build and test with RSpec
+      env:
+        CLASSROOM_TOKEN: ${{ secrets.CLASSROOM_TOKEN }}
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        sh grader.sh
+        result=$(sh grader.sh)
+        echo $result
+        echo ${CLASSROOM_TOKEN:0:4}
    
